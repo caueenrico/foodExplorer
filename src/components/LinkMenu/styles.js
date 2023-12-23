@@ -7,13 +7,15 @@ export const Container = styled.div`
   border-bottom: 1px solid ${theme.COLORS.Dark_1000} ;
   margin-top: 36px;
 
-  a {
+  button {
     color: ${theme.COLORS.Light_300};
     font-family: "Poppins",sans-serif;
     font-size: 2.4rem;
     font-weight: 300;
-    text-decoration: none;
-    
+    text-align: left;
+    background: transparent;
+    border: none;
+    width: 100%;
   }
 
 `

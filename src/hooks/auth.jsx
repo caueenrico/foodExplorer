@@ -30,24 +30,32 @@ function AuthProvider({ children }) {
       }
     }
   }
+
+  async function signOut() {
+    //removendo os dados do localstorage
+    localStorage.removeItem("@foodExplorer:user")
+    localStorage.removeItem("@foodExplorer:token")
+
+    setData({}) //setei o data como vazio
+  }
   
   //ele vai cair aqui no useEffect se ja foi logado pelo menos 1 vez na maquina que esta usando
     useEffect(() => {
       const token = localStorage.getItem("@foodExplorer:token");
-      const user = localStorage.getItem("@foodExplorer:user");
+      const userExists = localStorage.getItem("@foodExplorer:user");
   
-      if (token && user) {
+      if (token && userExists) {
         api.defaults.headers.common["Authorization"] = `Bearer ${token}`; //IMPORTANTE //para que coloque o token do usuario no headers das demais requisições
         //preciso guardar as informações em um estado
         setData({
-          user: JSON.parse(user),
+          userExists: JSON.parse(userExists),
           token,
         });
       }
     }, []);
 
   return (
-    <AuthContext.Provider value={{signIn, userExists: data.userExists}}>
+    <AuthContext.Provider value={{signIn, userExists: data.userExists, signOut}}>
       {children}
     </AuthContext.Provider>
   )

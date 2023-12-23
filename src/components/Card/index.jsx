@@ -29,7 +29,7 @@ export function Card() {
       <button className="heart"><img src={heart} alt="" /></button>
       
       <img src={Salada} alt="" />
-      <Link>
+      <Link to="/dish">
         Salada Ravanello
         <RiArrowRightSLine size={14}/>
       </Link>

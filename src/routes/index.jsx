@@ -6,10 +6,12 @@ import { useAuth } from "../hooks/auth";
 export function Routes (){
   const {userExists} = useAuth()
 
-  console.log(userExists)
+ 
    return (
     <BrowserRouter>
-      {userExists ? <AppRoutes /> : <AuthRoutes /> }
+     {userExists ? <AppRoutes /> : <AuthRoutes /> }
+
+  
     </BrowserRouter>
   )
 }

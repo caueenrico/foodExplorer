@@ -3,26 +3,31 @@ import { Logo } from "../../components/Logo";
 import { BannerPrincipal, Container, ContainerCategory } from "./styles";
 import bannerImg from "../../assets/pngegg2.png";
 import { Menu } from "../../components/Menu";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Card } from "../../components/Card";
 import { useKeenSlider } from "keen-slider/react";
 import { Footer } from "../../components/Footer";
+import { api } from "../../services/api";
 
 export function Home() {
-  const [click, useClick] = useState(true);
-
-  function handleClickMenu(state) {
-    useClick(state);
-  }
-
+  const [menuDB, setMenuDB] = useState([])
+  
   const [sliderRef] = useKeenSlider({
-    mode: "free-snap",
+    mode: "free",
     slides: {
-      origin: "auto",
       perView: 2,
       spacing: 100,
     },
-  });
+  }); 
+
+  useEffect(() => {
+    async function fetchMenu() {
+      const response = await api.get(`/menu/index?title=${''}&ingredient=${''}`);
+      setMenuDB(response.data)
+    }
+    fetchMenu()
+    console.log(menuDB)
+  },[])
 
   return (
     <>
@@ -40,38 +45,14 @@ export function Home() {
         <ContainerCategory>
           <h2>Refeições</h2>
 
-          <div ref={sliderRef} className="CardContainer keen-slider">
-            <div className="keen-slider__slide">
-              <Card />
-            </div>
-            <div className="keen-slider__slide">
-              <Card />
-            </div>
-            <div className="keen-slider__slide">
-              <Card />
-            </div>
+          <div ref={sliderRef} className="keen-slider CardContainer"> 
 
-            <div className="keen-slider__slide">
-              <Card />
-            </div>
-            <div className="keen-slider__slide">
-              <Card />
-            </div>
-            <div className="keen-slider__slide">
-              <Card />
-            </div>
-            <div className="keen-slider__slide">
-              <Card />
-            </div>
-            <div className="keen-slider__slide">
-              <Card />
-            </div>
-            <div className="keen-slider__slide">
-              <Card />
-            </div>
-            <div className="keen-slider__slide">
-              <Card />
-            </div>
+           {menuDB && menuDB.map(dish => (
+              <div className="keen-slider__slide" key={dish.id}>
+                <Card />
+              </div>
+            ))}
+             
           </div>
         </ContainerCategory>
 
@@ -79,37 +60,11 @@ export function Home() {
           <h2>Pratos principais</h2>
 
           <div ref={sliderRef} className="CardContainer keen-slider">
-            <div className="keen-slider__slide">
-              <Card />
-            </div>
-            <div className="keen-slider__slide">
-              <Card />
-            </div>
-            <div className="keen-slider__slide">
-              <Card />
-            </div>
-
-            <div className="keen-slider__slide">
-              <Card />
-            </div>
-            <div className="keen-slider__slide">
-              <Card />
-            </div>
-            <div className="keen-slider__slide">
-              <Card />
-            </div>
-            <div className="keen-slider__slide">
-              <Card />
-            </div>
-            <div className="keen-slider__slide">
-              <Card />
-            </div>
-            <div className="keen-slider__slide">
-              <Card />
-            </div>
-            <div className="keen-slider__slide">
-              <Card />
-            </div>
+          {menuDB.map(dish => (
+              <div className="keen-slider__slide" key={String(dish.id)}>
+                <Card />
+              </div>
+            ))}
           </div>
         </ContainerCategory>
 
@@ -117,37 +72,11 @@ export function Home() {
           <h2>Pratos principais</h2>
 
           <div ref={sliderRef} className="CardContainer keen-slider">
-            <div className="keen-slider__slide">
-              <Card />
-            </div>
-            <div className="keen-slider__slide">
-              <Card />
-            </div>
-            <div className="keen-slider__slide">
-              <Card />
-            </div>
-
-            <div className="keen-slider__slide">
-              <Card />
-            </div>
-            <div className="keen-slider__slide">
-              <Card />
-            </div>
-            <div className="keen-slider__slide">
-              <Card />
-            </div>
-            <div className="keen-slider__slide">
-              <Card />
-            </div>
-            <div className="keen-slider__slide">
-              <Card />
-            </div>
-            <div className="keen-slider__slide">
-              <Card />
-            </div>
-            <div className="keen-slider__slide">
-              <Card />
-            </div>
+          {menuDB.map(dish => (
+              <div className="keen-slider__slide" key={String(dish.id)}>
+                <Card />
+              </div>
+            ))}
           </div>
         </ContainerCategory>
       </Container>

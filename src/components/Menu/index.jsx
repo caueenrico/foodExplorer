@@ -4,9 +4,11 @@ import search from "../../assets/search.svg";
 import { Link } from "react-router-dom";
 import { LinkMenu } from "../LinkMenu";
 import { useState } from "react";
+import { useAuth } from "../../hooks/auth";
 
 export function Menu({clickX}) {
   
+  const {signOut} = useAuth()
   
   return (
     <>
@@ -23,7 +25,7 @@ export function Menu({clickX}) {
           <input type="text" placeholder="Busque por pratos ou ingredientes" />
         </SearchContainer>
 
-        <LinkMenu />
+        <LinkMenu funcao={signOut}/>
 
       </Container>
     </>

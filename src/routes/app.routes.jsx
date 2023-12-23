@@ -4,13 +4,11 @@ import { Dish } from "../pages/Dish";
 
 
 export function AppRoutes(){
-  
 
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/dish" element={<Dish />} />
-    
     </Routes>
   )
 }

@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 import { Container } from "./styles";
 
 
-export function LinkMenu() {
+export function LinkMenu({funcao}) {
   return(
     <Container>
-      <Link >
+      <button onClick={funcao}>
         Sair
-      </Link>
+      </button>
     </Container>
   )
 }
