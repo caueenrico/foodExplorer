@@ -3,32 +3,35 @@ import { Logo } from "../../components/Logo";
 import { BannerPrincipal, Container, ContainerCategory } from "./styles";
 import bannerImg from "../../assets/pngegg2.png";
 import { Menu } from "../../components/Menu";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Card } from "../../components/Card";
-import { useKeenSlider } from "keen-slider/react";
+
 import { Footer } from "../../components/Footer";
 import { api } from "../../services/api";
+import { register } from "swiper/element/bundle";
+import "swiper/css"; // Importe os estilos do Swiper
+
+register();
 
 export function Home() {
-  const [menuDB, setMenuDB] = useState([])
-  
-  const [sliderRef] = useKeenSlider({
-    mode: "free",
-    slides: {
-      perView: 2,
-      spacing: 100,
-    },
-  }); 
+  const [menuDB, setMenuDB] = useState([]);
+
+  const refeicao = menuDB.filter(item => item.category === "refeicao" ||item.category === "salada" )
+  const bebida = menuDB.filter(item => item.category === "suco")
+  const sobremesa = menuDB.filter(item => item.category === "sobremesa")
 
   useEffect(() => {
     async function fetchMenu() {
-      const response = await api.get(`/menu/index?title=${''}&ingredient=${''}`);
-      setMenuDB(response.data)
+      const response = await api.get(
+        `/menu/index?title=${""}&ingredient=${""}`
+      );
+      setMenuDB(response.data);
     }
-    fetchMenu()
-    console.log(menuDB)
-  },[])
-
+    fetchMenu();
+   
+   
+  }, []);
+  console.log(refeicao)
   return (
     <>
       <Header clickHamburger={() => handleClickMenu(false)} />
@@ -45,39 +48,76 @@ export function Home() {
         <ContainerCategory>
           <h2>Refeições</h2>
 
-          <div ref={sliderRef} className="keen-slider CardContainer"> 
-
-           {menuDB && menuDB.map(dish => (
-              <div className="keen-slider__slide" key={dish.id}>
-                <Card />
-              </div>
-            ))}
-             
-          </div>
+          <swiper-container
+            space-between={"27"}
+            slides-per-view="auto"
+            loop="true"
+          >
+            {menuDB.length == 0 ? (
+              <h1>carregando</h1>
+            ) : (
+              refeicao.map((dish) => (
+                <swiper-slide key={String(dish.id)}>
+                  <Card
+                    id={dish.id}
+                    picture={dish.picture}
+                    title={dish.title}
+                    price={dish.price}
+                  />
+                </swiper-slide>
+              ))
+            )}
+          </swiper-container>
         </ContainerCategory>
 
         <ContainerCategory>
-          <h2>Pratos principais</h2>
+          <h2>Sobremesas</h2>
 
-          <div ref={sliderRef} className="CardContainer keen-slider">
-          {menuDB.map(dish => (
-              <div className="keen-slider__slide" key={String(dish.id)}>
-                <Card />
-              </div>
-            ))}
-          </div>
+          <swiper-container
+            space-between={"27"}
+            slides-per-view="auto"
+            loop="true"
+          >
+            {menuDB.length == 0 ? (
+              <h1>carregando</h1>
+            ) : (
+              sobremesa.map((dish) => (
+                <swiper-slide key={String(dish.id)}>
+                  <Card
+                    id={dish.id}
+                    picture={dish.picture}
+                    title={dish.title}
+                    price={dish.price}
+                  />
+                </swiper-slide>
+              ))
+            )}
+          </swiper-container>
         </ContainerCategory>
 
         <ContainerCategory>
-          <h2>Pratos principais</h2>
+          <h2>Bebidas</h2>
 
-          <div ref={sliderRef} className="CardContainer keen-slider">
-          {menuDB.map(dish => (
-              <div className="keen-slider__slide" key={String(dish.id)}>
-                <Card />
-              </div>
-            ))}
-          </div>
+          <swiper-container
+            space-between={"27"}
+            slides-per-view="auto"
+            loop="true"
+          >
+            {menuDB.length == 0 ? (
+              <h1>carregando</h1>
+            ) : (
+              bebida.map((dish) => (
+                <swiper-slide key={String(dish.id)}>
+                  <Card
+                    id={dish.id}
+                    picture={dish.picture}
+                    title={dish.title}
+                    price={dish.price}
+                  />
+                </swiper-slide>
+              ))
+            )}
+          </swiper-container>
         </ContainerCategory>
       </Container>
       <Footer />

@@ -15,13 +15,12 @@ export const Container = styled.div`
   border-radius: 8px;
   border: 1px solid ${theme.COLORS.Dark_300};
 
-
   img {
     height: 88px;
     width: 88px;
   }
 
-  .heart{
+  .heart {
     position: absolute;
     right: 16px;
     top: 16px;
@@ -29,64 +28,51 @@ export const Container = styled.div`
     height: 22px;
     padding: 0;
     background: transparent;
+    border: none;
 
     img {
       width: 24px;
       height: 22px;
-  }
-    
-  }
-
-  a{
-    font-family: Poppins;
-    font-size: 1.4rem;
-    text-decoration: none;
-    color: ${theme.COLORS.Light_100};
-    display: flex;
-    align-items: center;
-
-    
+    }
   }
 
-  span{
+  span {
     color: ${theme.COLORS.Tints_Cake_200};
   }
 
-  button {
-    width: 100%;
+  .incluir{
+  
     height: 32px;
-    padding: 12px 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    border: none;
-    background: ${theme.COLORS.Tints_Tomato_100};
-
-    font-family: Poppins;
-    font-size: 1.4rem;
-    font-weight: 500;
-    color: ${theme.COLORS.Light_100};
-
   }
 
-  .Count{
+  .Count {
     display: flex;
     gap: 14px;
+    width: 100px;
 
-    button{
+    align-items: center;
+
+    button {
       background: transparent;
-      
+      display: flex;
+      align-items: center;
+        
       padding: 0;
+      border: none;
+      justify-content: center;
+      
       height: 24px;
       width: 24px;
-
+      
       img{
         height: 24px;
+        width: 24px;
       }
+      
     }
     span {
       color: ${theme.COLORS.Light_100};
+
     }
   }
-`
+`;

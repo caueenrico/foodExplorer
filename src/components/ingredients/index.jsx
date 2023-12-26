@@ -1,9 +1,9 @@
 import { Container } from "./styles";
 
-export function Ingredients() {
+export function Ingredients({name}) {
   return(
     <Container>
-      alface
+      {name}
     </Container>
   )
 }

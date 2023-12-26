@@ -55,6 +55,7 @@ export const ContainerCategory = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
+  overflow: hidden;
 
   margin-bottom: 24px;
 
@@ -64,7 +65,13 @@ export const ContainerCategory = styled.div`
     color: ${theme.COLORS.Light_300}
   }
 
-  .CardContainer{
+  swiper-container {
+    height: 29.2rem;
+  }
+
+  swiper-slide {
+    max-width: 21rem;
     display: flex;
   }
+
 `;
