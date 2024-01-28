@@ -1,8 +1,6 @@
 import { Header } from "../../components/Header";
-import { Logo } from "../../components/Logo";
 import { BannerPrincipal, Container, ContainerCategory } from "./styles";
 import bannerImg from "../../assets/pngegg2.png";
-import { Menu } from "../../components/Menu";
 import { useEffect, useRef, useState } from "react";
 import { Card } from "../../components/Card";
 
@@ -11,7 +9,7 @@ import { api } from "../../services/api";
 import { register } from "swiper/element/bundle";
 import "swiper/css"; // Importe os estilos do Swiper
 
-register();
+register();//para que o swiper funcione
 
 export function Home() {
   const [menuDB, setMenuDB] = useState([]);

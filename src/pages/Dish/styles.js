@@ -4,10 +4,13 @@ import theme from "../../styles/theme";
 export const Container = styled.div`
   font-family: Poppins, "sans-serif";
   display: flex;
+  
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   margin: 0 auto;
-  margin-top: 36px;
+  margin-top: 55px;
+  margin-bottom: 75px;
   gap: 16px;
   width: 316px;
 

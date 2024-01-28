@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import theme from "../../styles/theme";
+import {devicesBreakPoints} from "../../styles/devicesBreakPoints"
 
 export const Container = styled.div``;
 
@@ -48,6 +49,11 @@ export const BannerPrincipal = styled.div`
     left: -3rem;
     bottom: 0;
   }
+
+  @media (min-width: ${devicesBreakPoints.NOTEBOOK}){
+    
+  }
+
 `;
 
 export const ContainerCategory = styled.div`

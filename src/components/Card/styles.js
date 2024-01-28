@@ -5,9 +5,10 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 12px;
   padding: 24px;
-  height: 292px;
+  
   width: 210px;
   position: relative;
 
@@ -20,6 +21,8 @@ export const Container = styled.div`
     width: 88px;
   }
 
+  
+
   .heart {
     position: absolute;
     right: 16px;
@@ -29,6 +32,10 @@ export const Container = styled.div`
     padding: 0;
     background: transparent;
     border: none;
+
+    svg{
+      color: white;
+    }
 
     img {
       width: 24px;

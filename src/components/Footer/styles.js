@@ -3,6 +3,8 @@ import theme from "../../styles/theme";
 
 export const Container = styled.footer`
   width: 100%;
+  margin: 0;
+  
   height: 77px;
   background: ${theme.COLORS.Dark_600};
   display: flex;
