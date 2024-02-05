@@ -1,6 +1,7 @@
 import { Header } from "../../components/Header";
 import { BannerPrincipal, Container, ContainerCategory } from "./styles";
 import bannerImg from "../../assets/pngegg2.png";
+import Maskgroup from "../../assets/Maskgroup.png"
 import { useEffect, useRef, useState } from "react";
 import { Card } from "../../components/Card";
 
@@ -13,6 +14,7 @@ register();//para que o swiper funcione
 
 export function Home() {
   const [menuDB, setMenuDB] = useState([]);
+  const [search, setSearch] = useState('')
 
   const refeicao = menuDB.filter(item => item.category === "refeicao" ||item.category === "salada" )
   const bebida = menuDB.filter(item => item.category === "suco")
@@ -29,13 +31,25 @@ export function Home() {
    
    
   }, []);
-  console.log(refeicao)
+
+  useEffect(() => {
+    async function searchMenu(){
+      const response = await api.get(
+        `/menu/index?title=${search}&ingredient=${""}`
+      );
+      setMenuDB(response.data)
+    }
+    searchMenu()
+  },[search])
+
+  console.log(search)
   return (
     <>
-      <Header clickHamburger={() => handleClickMenu(false)} />
+      <Header clickHamburger={() => handleClickMenu(false)} search={(e) => setSearch(e.target.value)}/>
       <Container>
         <BannerPrincipal>
-          <img src={bannerImg} alt="" />
+          <img src={bannerImg} alt="" className="imgMobile" />
+          <img src={Maskgroup} alt="" className="imgDesktop" />
 
           <div className="textBanner">
             <h2>Sabores inigualáveis</h2>
@@ -49,10 +63,10 @@ export function Home() {
           <swiper-container
             space-between={"27"}
             slides-per-view="auto"
-            loop="true"
+            loop="false"
           >
             {menuDB.length == 0 ? (
-              <h1>carregando</h1>
+              <span>carregando...</span>
             ) : (
               refeicao.map((dish) => (
                 <swiper-slide key={String(dish.id)}>
@@ -77,7 +91,7 @@ export function Home() {
             loop="true"
           >
             {menuDB.length == 0 ? (
-              <h1>carregando</h1>
+              <span>carregando...</span>
             ) : (
               sobremesa.map((dish) => (
                 <swiper-slide key={String(dish.id)}>
@@ -102,7 +116,7 @@ export function Home() {
             loop="true"
           >
             {menuDB.length == 0 ? (
-              <h1>carregando</h1>
+              <span>carregando...</span>
             ) : (
               bebida.map((dish) => (
                 <swiper-slide key={String(dish.id)}>

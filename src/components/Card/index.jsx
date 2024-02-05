@@ -43,10 +43,18 @@ export function Card({ title, price, picture, id }) {
 
   return (
     <Container>
-      
-      <button className="heart" onClick={() => handleUpdateDish(id)}>
-        {role === "admin" ? <GoPencil size={23} /> : <img src={heart} alt="" />}
-      </button>
+      {role === "admin" ? (
+        <button className="heart" onClick={() => handleUpdateDish(id)}>
+          {" "}
+          <GoPencil size={23} />{" "}
+        </button>
+      ) : (
+        <button className="heart" onClick={''}>
+          {" "}
+          <img src={heart} alt="" />
+        </button>
+      )}
+
       <img src={`${api.defaults.baseURL}/files/${picture}`} alt="" />
       <ButtonText
         title={title}

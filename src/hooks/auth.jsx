@@ -7,6 +7,7 @@ const AuthContext = createContext({});
 function AuthProvider({ children }) {
   const [data, setData] = useState({});
 
+
   async function signIn({ email, password }) {
     try {
       const response = await api.post("/sessions", { email, password });
@@ -37,6 +38,10 @@ function AuthProvider({ children }) {
     localStorage.removeItem("@foodExplorer:token")
 
     setData({}) //setei o data como vazio
+  }
+
+  function likeMenu(){
+
   }
   
   //ele vai cair aqui no useEffect se ja foi logado pelo menos 1 vez na maquina que esta usando

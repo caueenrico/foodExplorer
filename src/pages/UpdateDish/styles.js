@@ -2,14 +2,17 @@ import styled from "styled-components";
 import theme from "../../styles/theme";
 
 export const Container = styled.div`
-  margin: 0 auto;
+  margin: 0;
   margin-top: 10px;
   display: flex;
   flex-direction: column;
   gap: 22px;
+  padding-left: 32px;
+  padding-right: 32px;
+  
   
   justify-content: center;
-  width: 364px;
+  width: 100%;
   
   
 a {

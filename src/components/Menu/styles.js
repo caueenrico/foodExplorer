@@ -6,6 +6,9 @@ export const Container = styled.div`
   height: 100%;
   width: 100%;
   padding: 0 28px;
+
+  transform: translateX(0%);
+  transition: transform 1s ease-in-out;
 `;
 
 export const Header = styled.header`

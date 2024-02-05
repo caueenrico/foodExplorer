@@ -1,4 +1,6 @@
 export const devicesBreakPoints = {
-  CELLSM: "360px",
+  CELLSM: "320px",
+  SM: "425px",
+  
   NOTEBOOK: "1024px"
 }

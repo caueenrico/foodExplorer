@@ -1,8 +1,12 @@
 import styled from "styled-components";
 import theme from "../../styles/theme";
-import {devicesBreakPoints} from "../../styles/devicesBreakPoints"
+import { devicesBreakPoints } from "../../styles/devicesBreakPoints";
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  @media (min-width: ${devicesBreakPoints.NOTEBOOK}) {
+    padding: 0px 123px;
+  }
+`;
 
 export const BannerPrincipal = styled.div`
   margin-inline: 1.2rem 1.6rem;
@@ -41,7 +45,6 @@ export const BannerPrincipal = styled.div`
     top: 3.6rem;
     right: 2.1rem;
   }
-
   img {
     width: 19.1rem;
 
@@ -50,10 +53,54 @@ export const BannerPrincipal = styled.div`
     bottom: 0;
   }
 
-  @media (min-width: ${devicesBreakPoints.NOTEBOOK}){
-    
+  .imgDesktop {
+    display: none;
   }
 
+  @media (min-width: ${devicesBreakPoints.NOTEBOOK}) {
+    height: 216px;
+    align-items: center;
+    justify-content: center;
+
+    .textBanner {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      left: 52rem;
+      top: 6.6rem;
+   
+
+      
+      h2 {
+        font-size: 3.4rem;
+        width: 100%;
+      }
+
+      p {
+        font-size: 1.6rem;
+        width: 100%;
+      }
+    }
+
+    .imgMobile {
+      display: none;
+    }
+
+    .imgDesktop {
+      display: flex;
+      width: 500px;
+      position: absolute;
+      left: -4rem;
+      bottom: -1rem;
+
+    
+    }
+
+    margin-top: 164px;
+  }
 `;
 
 export const ContainerCategory = styled.div`
@@ -68,7 +115,7 @@ export const ContainerCategory = styled.div`
   h2 {
     font-family: Poppins;
     font-size: 18px;
-    color: ${theme.COLORS.Light_300}
+    color: ${theme.COLORS.Light_300};
   }
 
   swiper-container {
@@ -79,5 +126,4 @@ export const ContainerCategory = styled.div`
     max-width: 21rem;
     display: flex;
   }
-
 `;

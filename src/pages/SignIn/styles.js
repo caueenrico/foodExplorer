@@ -16,19 +16,17 @@ export const Container = styled.div`
       align-items: center;
       justify-content: space-around;
     }
-
-
 `
 export const Headers = styled.div`
   display: flex;
   align-items: center;
   gap: 10.739px;
-  font-size: 3.7243rem;
+  font-size: 2.7243rem;
   font-weight: 700;
-  margin-bottom: 73px;
+  margin-bottom: 20px;
 
   @media (max-width: ${devicesBreakPoints.CELLSM}){
-    font-size: 2.7243rem;
+    font-size: 3.7243rem;
     justify-content: center;
   }
 
@@ -55,6 +53,7 @@ export const Form = styled.form`
     background: ${theme.COLORS.Dark_700};
     padding: 64px;
     border-radius: 8px;
+    width: 450px;
 
     input {
       width: 348px;
