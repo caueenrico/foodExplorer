@@ -10,8 +10,11 @@ import searche from "../../assets/search.svg";
 import { ButtonLogout } from "../ButtonLogout";
 import { Button } from "../Button";
 import { ButtonOrder } from "../ButtonOrder";
+import { useOrder } from "../../Context/OrderContext";
+import { useNavigate } from "react-router-dom";
 
-export function Header({search}) {
+export function Header({ search }) {
+  const { order } = useOrder();
   const { userExists } = useAuth();
   const role = userExists.role;
 
@@ -23,6 +26,12 @@ export function Header({search}) {
 
   function handleX() {
     setClick(false);
+  }
+
+  const navigate = useNavigate();
+
+  function handleOrders(){
+    navigate("/orderclient")
   }
 
   return (
@@ -61,19 +70,16 @@ export function Header({search}) {
             </SearchContainer>
 
             <div className="orderContainer">
-              <div className="receipt">0</div>
+              <div className="receipt">{order.length}</div>
+              <button onClick={handleOrders}>
               <img src={receipt} alt="receipt" />
+              </button>
             </div>
 
-           
-             
             <ButtonOrder />
-
 
             <ButtonLogout />
           </div>
-
-            
         )}
       </Container>
     </>

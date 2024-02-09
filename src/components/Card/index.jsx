@@ -13,7 +13,7 @@ import { ButtonText } from "../ButtonText";
 import { Button } from "../Button";
 import { useAuth } from "../../hooks/auth";
 
-export function Card({ title, price, picture, id }) {
+export function Card({ title, price, picture, id, handleClick }) {
   const { userExists } = useAuth();
   const role = userExists.role;
   const [count, setCount] = useState(1);
@@ -49,7 +49,7 @@ export function Card({ title, price, picture, id }) {
           <GoPencil size={23} />{" "}
         </button>
       ) : (
-        <button className="heart" onClick={''}>
+        <button className="heart">
           {" "}
           <img src={heart} alt="" />
         </button>
@@ -63,6 +63,7 @@ export function Card({ title, price, picture, id }) {
       />
 
       <span>R$ {price}</span>
+
       {role === "admin" ? (
         ""
       ) : (
@@ -77,7 +78,7 @@ export function Card({ title, price, picture, id }) {
               <img src={Plus} alt="" />
             </button>
           </div>
-          <Button title={"incluir"} className="incluir" />{" "}
+          <Button title={"incluir"} className="incluir" onClick={handleClick}/>{" "}
         </>
       )}
     </Container>

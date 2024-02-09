@@ -4,6 +4,7 @@ import { Dish } from "../pages/Dish";
 import { NewDish } from "../pages/NewDish";
 import { UpdateDish } from "../pages/UpdateDish";
 import { useAuth } from "../hooks/auth";
+import { OrderClient } from "../pages/OrderClient";
 
 export function AppRoutes() {
   const { userExists } = useAuth();
@@ -20,8 +21,8 @@ export function AppRoutes() {
       )}
 
       <Route path="/newdish" element={<NewDish />} />
-
       <Route path="/dish/:id" element={<Dish />} />
+      <Route path="/orderclient" element={<OrderClient />} />
     </Routes>
   );
 }

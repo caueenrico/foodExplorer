@@ -3,12 +3,16 @@ import Polygon from "../../assets/Polygon.png";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useAuth } from "../../hooks/auth";
 
 export function SignIn() {
   const [email, setEmail] = useState({});
   const [password, setPassword] = useState({});
+
+
+  
+
 
   const { signIn } = useAuth();
 
