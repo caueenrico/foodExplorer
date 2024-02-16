@@ -26,7 +26,7 @@ export function Home() {
 
   function handleAddDishOrder(id){
     getIdDish({id})
-    console.log('vai')
+   
   }
 
   useEffect(() => {
@@ -51,7 +51,7 @@ export function Home() {
     searchMenu()
   },[search])
 
-  console.log(search)
+  console.log()
   return (
     <>
       <Header clickHamburger={() => handleClickMenu(false)} search={(e) => setSearch(e.target.value)}/>

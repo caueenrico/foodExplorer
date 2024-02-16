@@ -1,11 +1,14 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { api } from "../services/api";
+import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext({});
 
 //isso aqui eu vou mandar para o main.js
 function AuthProvider({ children }) {
   const [data, setData] = useState({});
+
+  
 
 
   async function signIn({ email, password }) {
@@ -33,10 +36,10 @@ function AuthProvider({ children }) {
   }
 
   async function signOut() {
-    //removendo os dados do localstorage
+    //removendo os dados do localstorage    
     localStorage.removeItem("@foodExplorer:user")
     localStorage.removeItem("@foodExplorer:token")
-
+    
     setData({}) //setei o data como vazio
   }
 

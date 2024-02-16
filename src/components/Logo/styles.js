@@ -20,4 +20,16 @@ export const Container = styled.div`
     height: 24px;
   }
 
+  button{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    gap: 6px;
+    color: aliceblue;
+    width: 100%;
+  }
+
 `

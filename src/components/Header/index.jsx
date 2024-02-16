@@ -30,8 +30,8 @@ export function Header({ search }) {
 
   const navigate = useNavigate();
 
-  function handleOrders(){
-    navigate("/orderclient")
+  function handleOrders() {
+    navigate("/orderclient");
   }
 
   return (
@@ -72,7 +72,7 @@ export function Header({ search }) {
             <div className="orderContainer">
               <div className="receipt">{order.length}</div>
               <button onClick={handleOrders}>
-              <img src={receipt} alt="receipt" />
+                <img src={receipt} alt="receipt" />
               </button>
             </div>
 
