@@ -12,13 +12,20 @@ import { api } from "../../services/api";
 import { ButtonText } from "../ButtonText";
 import { Button } from "../Button";
 import { useAuth } from "../../hooks/auth";
+import { useOrder } from "../../Context/OrderContext";
 
-export function Card({ title, price, picture, id, handleClick }) {
+export function Card({ title, price, picture, id }) {
   const { userExists } = useAuth();
-  const role = userExists.role;
+  const {getIdDish} = useOrder()
   const [count, setCount] = useState(1);
 
+  const role = userExists.role;
   const navigate = useNavigate();
+
+  function handleAddDishOrder(id){
+    getIdDish({id, count})
+   
+  }
 
   function handletoMenuDetails(id) {
     navigate(`/dish/${id}`);
@@ -78,7 +85,7 @@ export function Card({ title, price, picture, id, handleClick }) {
               <img src={Plus} alt="" />
             </button>
           </div>
-          <Button title={"incluir"} className="incluir" onClick={handleClick}/>{" "}
+          <Button title={"incluir"} className="incluir" onClick={() => handleAddDishOrder(id)}/>{" "}
         </>
       )}
     </Container>

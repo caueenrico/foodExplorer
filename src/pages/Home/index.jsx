@@ -2,32 +2,26 @@ import { Header } from "../../components/Header";
 import { BannerPrincipal, Container, ContainerCategory } from "./styles";
 import bannerImg from "../../assets/pngegg2.png";
 import Maskgroup from "../../assets/Maskgroup.png"
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Card } from "../../components/Card";
 
 import { Footer } from "../../components/Footer";
 import { api } from "../../services/api";
 import { register } from "swiper/element/bundle";
 import "swiper/css"; // Importe os estilos do Swiper
-import { useOrder } from "../../Context/OrderContext";
+
 
 register();//para que o swiper funcione
 
 export function Home() {
-  const { getIdDish, order } = useOrder()
-  const [menuDB, setMenuDB] = useState([]);
+   const [menuDB, setMenuDB] = useState([]);
   const [search, setSearch] = useState('')
-
 
 
   const refeicao = menuDB.filter(item => item.category === "refeicao" ||item.category === "salada" )
   const bebida = menuDB.filter(item => item.category === "suco")
   const sobremesa = menuDB.filter(item => item.category === "sobremesa")
 
-  function handleAddDishOrder(id){
-    getIdDish({id})
-   
-  }
 
   useEffect(() => {
     async function fetchMenu() {
@@ -84,7 +78,7 @@ export function Home() {
                     picture={dish.picture}
                     title={dish.title}
                     price={dish.price}
-                    handleClick={() => handleAddDishOrder(dish.id)}
+                   
                   />
                 </swiper-slide>
               ))
@@ -110,7 +104,7 @@ export function Home() {
                     picture={dish.picture}
                     title={dish.title}
                     price={dish.price}
-                    handleClick={() => handleAddDishOrder(dish.id)}
+                   
                   />
                 </swiper-slide>
               ))
@@ -136,7 +130,7 @@ export function Home() {
                     picture={dish.picture}
                     title={dish.title}
                     price={dish.price}
-                    handleClick={() => handleAddDishOrder(dish.id)}
+                  
                   />
                 </swiper-slide>
               ))

@@ -8,13 +8,27 @@ function OrderProvider({ children }) {
     return storedOrder ? JSON.parse(storedOrder) : [];
   });
 
-  function getIdDish({ id }) {
-    setOrder((preventdefault) => [...preventdefault, id]);
+  function getIdDish({ id, count }) {
+    const existingItem = order.find(item => item.id === id);
+
+    if (existingItem) {
+      // Se o item já existe no pedido, atualiza apenas a quantidade
+      const updatedOrder = order.map(item => {
+        if (item.id === id) {
+          return { ...item, count: item.count + count };
+        }
+        return item;
+      });
+      setOrder(updatedOrder);
+    } else {
+      // Caso contrário, adiciona o novo item ao pedido
+      setOrder(prevOrder => [...prevOrder, { id, count }]);
+    }
   }
 
-  function excluirItem({id}) {
+  function excluirItem({ id }) {
     // Filtra os itens da order que não correspondem ao ID passado
-    const newOrder = order.filter(item => item !== id);
+    const newOrder = order.filter(item => item.id !== id);
     // Atualiza o estado 'order' com o novo array resultante
     setOrder(newOrder);
   }

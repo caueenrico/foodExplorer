@@ -11,8 +11,14 @@ export function Menu({ clickX, search }) {
   const role = userExists.role;
 
   const navigate = useNavigate();
+
   function handleNavigateEditDish() {
     navigate(`/newdish`);
+  }
+
+  function handleOut() {
+    signOut()
+    navigate("/")
   }
 
   return (
@@ -37,7 +43,7 @@ export function Menu({ clickX, search }) {
         ) : (
           ""
         )}
-        <LinkMenu text={"Sair"} funcao={signOut} />
+        <LinkMenu text={"Sair"} funcao={handleOut} />
       </Container>
     </>
   );

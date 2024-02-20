@@ -7,19 +7,32 @@ import { api } from "../../services/api";
 
 export function OrderClient() {
   const { order } = useOrder();
-  const [menuDB, setMenuDB] = useState([])
+  const [menuDB, setMenuDB] = useState([]);
+  const [total, setTotal] = useState(0);
 
-  // Filtra os itens do menuDB que têm id presente na order
-  const escolhidos = menuDB.filter(item => order.includes(item.id));
+   // Filtra os itens do menuDB que têm id presente na order
+   const escolhidos = menuDB.filter((item) =>
+   order.map((orderItem) => orderItem.id).includes(item.id)
+ );
 
-  // Objeto para contar a quantidade de ocorrências de cada número na order
-   const quantidadePorNumero = order.reduce((acc, curr) => {
-    acc[curr] = (acc[curr] || 0) + 1;
-    return acc;
-  }, {});
+  // Função para obter a quantidade com base no ID do item na ordem
+  const getQuantityById = (id) => {
+    const orderItem = order.find((item) => item.id === id);
+    return orderItem ? orderItem.count : 0; // Retorna a quantidade se encontrada, caso contrário, retorna 0
+  };
 
-   console.log(quantidadePorNumero)
-  
+  const calculateTotal = () => {
+    let total = 0
+
+    escolhidos.forEach(item => {
+      const quantidade = getQuantityById(item.id)
+      const valor = parseFloat(item.price.replace(",", "."))
+      total += quantidade * valor
+    });
+    return total.toFixed(2)
+
+  }
+
   useEffect(() => {
     async function fetchMenu() {
       const response = await api.get(
@@ -30,7 +43,11 @@ export function OrderClient() {
     fetchMenu();
   }, []);
 
-  
+  useEffect(() => {
+    const newTotal = calculateTotal();
+    setTotal(newTotal);
+  }, [order, menuDB]);
+
   return (
     <>
       <Header />
@@ -39,16 +56,17 @@ export function OrderClient() {
         <h1>Meu Pedido</h1>
 
         {escolhidos.map((orden) => (
-          <OrderCard 
+          <OrderCard
+            key={orden.id}
             img={orden.picture}
-            quantidade={quantidadePorNumero[orden.id]}
+            quantidade={getQuantityById(orden.id)}
             name={orden.title}
             preco={orden.price}
             num={orden.id}
           />
         ))}
 
-
+        <p>Total: {total}</p>
       </Container>
     </>
   );

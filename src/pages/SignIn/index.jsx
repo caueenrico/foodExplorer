@@ -7,18 +7,21 @@ import { useContext, useState } from "react";
 import { useAuth } from "../../hooks/auth";
 
 export function SignIn() {
-  const [email, setEmail] = useState({});
-  const [password, setPassword] = useState({});
-
-
-  
-
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const { signIn } = useAuth();
 
-  function handleSignIn() {
-    signIn({email, password})
-    
+  async function handleSignIn() {
+    setLoading(true);
+    try {
+      await signIn({ email, password });
+    } catch (error) {
+      console.error("Erro ao fazer login:", error);
+    } finally {
+      setLoading(false); // Define o estado de carregamento de volta para falso apenas se a chamada signIn for bem-sucedida
+    }
   }
 
   return (
@@ -42,9 +45,10 @@ export function SignIn() {
           placeholder={"No mínimo 6 caracteres"}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Button 
-          title={"Entrar"} 
+        <Button
+          title={loading ? "Carregando..." : "Entrar"}
           onClick={handleSignIn}
+          disabled={loading}
         />
         <Link to="/register">Criar uma conta</Link>
       </Form>
