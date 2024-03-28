@@ -10,8 +10,8 @@
   "theme_color": "#8160c7",
   "icons": [
     {
-      "src": "/icon.png",
-      "type": "image/svg+xml+png"
+      "src": "/icon.svg",
+      "type": "image/svg+xml"
     }
   ],
   "description": "Tecnologia para seu jhhuhuhi negocio",
