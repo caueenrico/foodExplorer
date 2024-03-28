@@ -1,0 +1,19 @@
+{
+  "background_color": "#8160c7",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "food explorer",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "food explorer",
+  "start_url": "/",
+  "theme_color": "#8160c7",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "type": "image/svg+xml"
+    }
+  ],
+  "description": "Tecnologia para seu negocio",
+  "lang": "pt"
+}

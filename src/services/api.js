@@ -4,6 +4,6 @@ import axios from "axios";
 //http://localhost:3000
 
 export const api = axios.create({
-  baseURL: "https://foodapi-4nj1.onrender.com"
+  baseURL: "http://192.168.0.9:3000"
 });
 

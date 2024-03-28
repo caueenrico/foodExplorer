@@ -5,6 +5,7 @@ import { NewDish } from "../pages/NewDish";
 import { UpdateDish } from "../pages/UpdateDish";
 import { useAuth } from "../hooks/auth";
 import { OrderClient } from "../pages/OrderClient";
+import Dashboard from "../pages/cozinha";
 
 export function AppRoutes() {
   const { userExists } = useAuth();
@@ -15,14 +16,20 @@ export function AppRoutes() {
       <Route path="/" element={<Home />} />
 
       {role === "admin" ? (
-        <Route path="/updatedish/:id" element={<UpdateDish />} />
+        <>
+          <Route path="/updatedish/:id" element={<UpdateDish />} />
+          <Route path="/cozinha" element={<Dashboard />} />
+        </>
+        
       ) : (
         <Route path="/" element={<Home />} />
+
       )}
 
       <Route path="/newdish" element={<NewDish />} />
       <Route path="/dish/:id" element={<Dish />} />
       <Route path="/orderclient" element={<OrderClient />} />
+      
     </Routes>
   );
 }
