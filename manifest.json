@@ -11,7 +11,7 @@
   "icons": [
     {
       "src": "/image.png",
-      "type": "image/svg+xml"
+      "type": "image/svg+xml+png"
     }
   ],
   "description": "Tecnologia para seu negocio",
