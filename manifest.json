@@ -10,7 +10,7 @@
   "theme_color": "#8160c7",
   "icons": [
     {
-      "src": "/hamburger.svg",
+      "src": "/icon.png",
       "type": "image/svg+xml+png"
     }
   ],
