@@ -1,0 +1,17 @@
+{
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "foodexplorer-plum.vercel",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "foodexplorer-plum.vercel",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "type": "image/svg+xml"
+    }
+  ]
+}
