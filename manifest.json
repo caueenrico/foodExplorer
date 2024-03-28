@@ -11,7 +11,8 @@
   "icons": [
     {
       "src": "/icon.svg",
-      "type": "image/svg+xml"
+      "size": "512x512",
+      "type": "image/png"
     }
   ],
   "description": "Tecnologia para seu jhhuhuhi negocio",
