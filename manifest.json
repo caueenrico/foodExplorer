@@ -10,7 +10,7 @@
   "theme_color": "#ffffff",
   "icons": [
     {
-      "src": "public/Polygon 1.svg",
+      "src": "public/Polygon.png",
       "type": "image/svg",
       "sizes": "900x900",
       "purpose": "any"
