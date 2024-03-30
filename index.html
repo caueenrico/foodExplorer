@@ -15,10 +15,15 @@
     />
 
     <script>
-      navigator.serviceWorker.register("pwabuilder-sw.js");
+      if (typeof navigator.serviceWorker !== 'undefined') {
+        navigator.serviceWorker.register('sw.js')
+      }
     </script>
+
+  
     <link rel="manifest" href="manifest.json" />
     
+  <script>navigator.serviceWorker.register("sw.js")</script> 
     <title>Food Explorer</title>
   </head>
   <body>
