@@ -10,9 +10,9 @@
   "theme_color": "#ffffff",
   "icons": [
     {
-      "src": "public/icon512x512-RkRY7Txf.png",
-      "type": "image/png",
-      "sizes": "600x716",
+      "src": "public/Polygon 1.svg",
+      "type": "image/svg",
+      "sizes": "900x900",
       "purpose": "any"
     }
   ],
