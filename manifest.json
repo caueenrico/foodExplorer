@@ -2,10 +2,10 @@
   "background_color": "#ffffff",
   "dir": "ltr",
   "display": "standalone",
-  "name": "foodexplorer-plum.vercel",
+  "name": "foodexplorer-plum",
   "orientation": "any",
   "scope": "/",
-  "short_name": "foodexplorer-plum.vercel",
+  "short_name": "foodexplorer-plum",
   "start_url": "/",
   "theme_color": "#ffffff",
   "icons": [
