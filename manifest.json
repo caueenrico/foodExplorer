@@ -1,7 +1,7 @@
 {
 "name": "foodExplorer",
 "short_name": "fde",
-"start_url": "/",
+"start_url": ".",
 "display": "standalone",
 "description": "A description for your application",
 "lang": " The default language of your application",
@@ -11,13 +11,13 @@
 "orientation": "any",
 "icons": [
   {
-    "src": "https://www.pwabuilder.com/assets/icons/icon_512.png",
+    "src": "/public/icon-512x512.png",
     "sizes": "512x512",
     "type": "image/png",
     "purpose": "maskable"
   },
   {
-    "src": "https://www.pwabuilder.com/assets/icons/icon_192.png",
+    "src": "/public/manifest-icon-192.maskable.png",
     "sizes": "192x192",
     "type": "image/png",
     "purpose": "any"
